@@ -36,3 +36,18 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :test, :development do
+	gem 'rspec-rails', '~> 2.5'
+	gem 'dynamic_form'
+	gem 'bootstrap-sass'
+end
+group :test do
+	gem 'cucumber-rails-training-wheels'
+	gem 'capybara'
+	gem 'database_cleaner'
+	#gem 'factory_girl'
+	gem 'factory_girl_rails', '~> 3.0'
+
+end
+

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  soilMoisture: 1.5
+  light: 1.5
+  soilTemp: 1.5
+  airTemp: 1.5
+  humidity: 1.5
+
+two:
+  soilMoisture: 1.5
+  light: 1.5
+  soilTemp: 1.5
+  airTemp: 1.5
+  humidity: 1.5
