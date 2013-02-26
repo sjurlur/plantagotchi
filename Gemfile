@@ -41,6 +41,7 @@ group :test, :development do
 	gem 'rspec-rails', '~> 2.5'
 	gem 'dynamic_form'
 	gem 'bootstrap-sass'
+	gem 'paperclip'
 end
 group :test do
 	gem 'cucumber-rails-training-wheels'

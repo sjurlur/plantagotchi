@@ -1,0 +1,16 @@
+<%= form_for @plant do |f| %>
+<%= f.error_messages %>
+	<p>
+		<%= f.label :name, "Plant name" %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :location, "Plant location" %>
+		<%= f.text_field :location %>
+	</p>
+	<p>
+		<%= f.label :plant_type, "Plant type" %>
+		<%= f.text_field :plant_type %>
+	</p>
+	<%= f.submit %>
+<%end%>

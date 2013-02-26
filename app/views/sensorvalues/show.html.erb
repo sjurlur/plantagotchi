@@ -1,0 +1,11 @@
+<div id="sensorvalues">
+	<h2><%= @sensorvalue.created_at %></h2>
+	Humidity: <%= @sensorvalue.humidity %>
+	Air temperature: <%= @sensorvalue.airTemp %>
+	Light: <%= @sensorvalue.light %>
+	Soil moisture: <%= @sensorvalue.soilMoisture %>
+	Soil temp: <%= @sensorvalue.soilTemp %>
+	<%= image_tag @sensorvalue.photo.url %>
+	<%= link_to "Edit sensorvalue", [:edit, @plant, @sensorvalue] %>
+	<%= link_to "Delete sensorvalue", [@plant, @sensorvalue], :method => :delete, :confirm => "Are you sure you want to delete these sensorvalues?" %>
+</div>

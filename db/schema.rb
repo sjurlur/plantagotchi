@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226111902) do
+ActiveRecord::Schema.define(:version => 20130226145547) do
 
   create_table "plants", :force => true do |t|
     t.string   "name"
+    t.string   "plant_type"
     t.string   "location"
-    t.string   "type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -27,8 +27,13 @@ ActiveRecord::Schema.define(:version => 20130226111902) do
     t.float    "soilTemp"
     t.float    "airTemp"
     t.float    "humidity"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "plant_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end

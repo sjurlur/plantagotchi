@@ -1,0 +1,27 @@
+<%= form_for [@plant, @sensorvalue], :html => {:multipart => true} do |f| %>
+<%= f.error_messages %>
+	<p>
+		<%= f.label :airTemp, "Air temperature" %>
+		<%= f.number_field :airTemp %>
+	</p>
+	<p>
+		<%= f.label :humidity, "Humidity" %>
+		<%= f.number_field :humidity %>
+	</p>
+	<p>
+		<%= f.label :light, "Light" %>
+		<%= f.number_field :light %>
+	</p>
+	<p>
+		<%= f.label :soilMoisture, "Soil moisture" %>
+		<%= f.number_field :soilMoisture %>
+	</p>
+		<p>
+		<%= f.label :soilTemp, "Soil temperature" %>
+		<%= f.number_field :soilTemp %>
+	</p>
+	<p>
+		<%= f.file_field :photo %>
+	</p>
+	<%= f.submit %>
+<%end%>
