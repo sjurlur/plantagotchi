@@ -1,10 +1,106 @@
+
+
 <h2><%= @plant.name %></h2>
+
+
+
 <p>
-	Location: <%= @plant.location %>
+	<b>Location:</b> <%= @plant.location %>
 </p>
 <p>
-	Type: <%= @plant.plant_type %>
+	<b>Type:</b> <%= @plant.plant_type %>
 </p>
-<%= link_to "Edit plant", edit_plant_path(@plant) %>
-<%= link_to "Delete plant", @plant, :method => :delete, :confirm => "Are you sure you want to delete this plant?" %>
-<%= link_to "Add sensor values",  new_plant_sensorvalue_path(@plant) %>
+
+<script type="text/javascript" charset="utf-8">
+ $(function() {
+ 	new Highcharts.Chart({
+ 		chart: {
+ 			renderTo: "chart"
+ 		},
+ 		title: {
+ 			text: "Light"
+ 		},
+ 		xAxis: {
+ 			type: "datetime"
+ 		},
+ 		yAxis: {
+ 			title:{
+ 				text: "lux"
+ 			}
+ 		},
+ 		series: [{
+ 			pointInterval: <%= 1.day * 1000 %>,
+ 			pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
+ 			data: [1,3,4,5,6,16,9,8,7]
+ 		}]
+ 	});
+ });
+</script>
+<script type="text/javascript" charset="utf-8">
+ $(function() {
+ 	new Highcharts.Chart({
+ 		chart: {
+ 			renderTo: "tempchart"
+ 		},
+ 		title: {
+ 			text: "Air temperature"
+ 		},
+ 		xAxis: {
+ 			type: "datetime"
+ 		},
+ 		yAxis: {
+ 			title:{
+ 				text: "lux"
+ 			}
+ 		},
+ 		series: [{
+ 			pointInterval: <%= 1.day * 1000 %>,
+ 			pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
+ 			data: [1,3,4,5,6,16,9,8,7]
+ 		}]
+ 	});
+ });
+</script>
+
+<div id="chart" style="width: 530px; height:300px; float:left;">
+	</div>
+	<div id="tempchart" style="width: 530px; height:300px; float:right;">
+	</div>
+
+<table class="sensorvalues table">
+	<thead>
+		<tr>
+			<td>Created at</td>
+			<td>Relative humidity</td>
+			<td>Light (lux)</td>
+			<td>Soil moisture</td>
+			<td>Soil temperature</td>
+			<td>Air temperature</td>
+			<td>Link</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @plant.sensorvalues.each do |sensorvalue| %>
+		<tr>
+			<td><%= sensorvalue.created_at %>
+			<td><%= sensorvalue.humidity %></td>
+			<td><%= sensorvalue.light %></td>
+			<td><%= sensorvalue.soilMoisture %></td>
+			<td><%= sensorvalue.soilTemp %></td>
+			<td><%= sensorvalue.airTemp %></td>
+			<td><%= link_to "Show", [@plant, sensorvalue]%></td>
+		</tr>
+	</tbody>
+	
+	<%end%>
+</table>
+
+<div class="btn-group">
+	<button class="btn"><%= link_to "Edit plant", edit_plant_path(@plant) %></button>
+	<button class="btn">
+	<%= link_to "Delete plant", @plant, :method => :delete, :confirm => "Are you sure you want to delete this plant?" %></button>
+	<button class="btn">
+		<%= link_to "Add sensor values",  new_plant_sensorvalue_path(@plant) %>
+	</button>
+</div>
+

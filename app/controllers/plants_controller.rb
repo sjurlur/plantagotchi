@@ -3,6 +3,7 @@ before_filter :find_plant, :only => [:show, :edit, :update, :destroy]
 
 
 	def index
+		@plants = Plant.all
 
 	end
 
