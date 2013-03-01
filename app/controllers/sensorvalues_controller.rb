@@ -44,7 +44,7 @@ class SensorvaluesController < ApplicationController
 	def destroy
 		@sensorvalue.destroy
 		flash[:notice] = "Sensorvalue has been deleted"
-		redirect_to @sensorvalue
+		redirect_to @plant
 
 	end
 

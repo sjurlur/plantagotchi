@@ -1,11 +1,35 @@
 <div id="sensorvalues">
 	<h2><%= @sensorvalue.created_at %></h2>
-	Humidity: <%= @sensorvalue.humidity %>
-	Air temperature: <%= @sensorvalue.airTemp %>
-	Light: <%= @sensorvalue.light %>
-	Soil moisture: <%= @sensorvalue.soilMoisture %>
-	Soil temp: <%= @sensorvalue.soilTemp %>
-	<%= image_tag @sensorvalue.photo.url %>
-	<%= link_to "Edit sensorvalue", [:edit, @plant, @sensorvalue] %>
-	<%= link_to "Delete sensorvalue", [@plant, @sensorvalue], :method => :delete, :confirm => "Are you sure you want to delete these sensorvalues?" %>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>Created at</td>
+				<td>Relative humidity</td>
+				<td>Light (lux)</td>
+				<td>Soil moisture</td>
+				<td>Soil temperature</td>
+				<td>Air temperature</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @sensorvalue.created_at %></td>
+				<td><%= @sensorvalue.humidity %></td>
+				<td><%= @sensorvalue.light %></td>
+				<td><%= @sensorvalue.soilMoisture %></td>
+				<td><%= @sensorvalue.soilTemp %></td>
+				<td><%= @sensorvalue.airTemp %></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<%= image_tag @sensorvalue.photo.url,{:class => "img-polaroid"} %>
+	
+	<br />
+	<br />
+	<div class="btn-group">
+	<button class="btn"><%= link_to "Edit sensorvalue", [:edit, @plant, @sensorvalue] %></button>
+	<button class="btn">
+	<%= link_to "Delete sensorvalue", [@plant, @sensorvalue], :method => :delete, :confirm => "Are you sure you want to delete these sensorvalues?" %></button>
+</div>
 </div>

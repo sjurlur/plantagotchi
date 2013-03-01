@@ -1,14 +1,8 @@
 
 
-<h2><%= @plant.name %></h2>
-
-
-
+<h2><%= @plant.name %></h2> 
 <p>
-	<b>Location:</b> <%= @plant.location %>
-</p>
-<p>
-	<b>Type:</b> <%= @plant.plant_type %>
+<i><%= @plant.plant_type %> plant at <%= @plant.location %></i>
 </p>
 
 <script type="text/javascript" charset="utf-8">
@@ -76,7 +70,6 @@
 			<td>Soil moisture</td>
 			<td>Soil temperature</td>
 			<td>Air temperature</td>
-			<td>Link</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -88,7 +81,10 @@
 			<td><%= sensorvalue.soilMoisture %></td>
 			<td><%= sensorvalue.soilTemp %></td>
 			<td><%= sensorvalue.airTemp %></td>
-			<td><%= link_to "Show", [@plant, sensorvalue]%></td>
+			<td>
+				
+<button class="btn btn-mini"><%= link_to "Show", [@plant, sensorvalue] %></button>
+			</td>
 		</tr>
 	</tbody>
 	

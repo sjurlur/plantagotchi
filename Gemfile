@@ -42,6 +42,7 @@ group :test, :development do
 	gem 'dynamic_form'
 	gem 'bootstrap-sass'
 	gem 'paperclip'
+	gem "highcharts-rails", "~> 2.3.0"
 end
 group :test do
 	gem 'cucumber-rails-training-wheels'
