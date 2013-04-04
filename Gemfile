@@ -2,6 +2,13 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.13'
 
+gem 'aws-sdk'
+gem 'paperclip'
+gem 'dynamic_form'
+gem 'bootstrap-sass'
+gem "highcharts-rails", "~> 2.3.0"
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -40,12 +47,9 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :test, :development do
-	gem 'sqlite3'
+	gem 'pg'
 	gem 'rspec-rails', '~> 2.5'
-	gem 'dynamic_form'
-	gem 'bootstrap-sass'
-	gem 'paperclip'
-	gem "highcharts-rails", "~> 2.3.0"
+
 end
 group :test do
 	gem 'cucumber-rails-training-wheels'

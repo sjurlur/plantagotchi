@@ -6,6 +6,7 @@ class CreateSensorvalues < ActiveRecord::Migration
       t.float :soilTemp
       t.float :airTemp
       t.float :humidity
+      t.integer :plant_id
 
       t.timestamps
     end
