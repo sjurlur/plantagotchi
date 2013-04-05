@@ -67,7 +67,7 @@ Plantagotchi::Application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => ENV['plantagotchi'],
+    :bucket => ENV['BUCKET_NAME'],
     :access_key_id => ENV['AKIAIZ2OBIL3KTWJYH5A'],
     :secret_access_key => ENV['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']
   }
