@@ -68,8 +68,8 @@ Plantagotchi::Application.configure do
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['BUCKET_NAME'],
-    :access_key_id => ENV['AKIAIZ2OBIL3KTWJYH5A'],
-    :secret_access_key => ENV['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']
+    :access_key_id => ENV['MyAccessKEY'],
+    :secret_access_key => ENV['MySecretKEY']
   }
 }
 end
