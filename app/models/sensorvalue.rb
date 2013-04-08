@@ -3,6 +3,6 @@ class Sensorvalue < ActiveRecord::Base
   belongs_to :plant
 
   has_attached_file :photo, 
-  	:path => Time.now.utc.to_s+".:extension",
+  	:path => ":id.:extension", #vi har et problem!
 	:url => ":s3_eu_url"
 end
