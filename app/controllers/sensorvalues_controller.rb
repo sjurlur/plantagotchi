@@ -1,14 +1,15 @@
 class SensorvaluesController < ApplicationController
 	before_filter :find_plant
 	before_filter :find_sensorvalue, :only => [:show, :edit, :update, :destroy]
-
+	respond_to :json, :xml, :html
 
 	def index
-
+		@sensorvalues = @plant.sensorvalues
+		respond_with(@sensorvalues)
 	end
 
 	def show
-
+		respond_with(@sensorvalue)
 	end
 
 	def new
@@ -50,10 +51,18 @@ class SensorvaluesController < ApplicationController
 
 	private
 		def find_plant
-			@plant = Plant.find(params[:plant_id])
+			@plant = Plant.where(:id => params[:plant_id]).first
+			if @plant == nil
+				error = { :error => "Plant "+params[:plant_id]+ " does not exist." }
+  	   			respond_with(error, :status => 404)	
+  	   		end
 		end
 
 		def find_sensorvalue
-			@sensorvalue = @plant.sensorvalues.find(params[:id])
+			@sensorvalue = @plant.sensorvalues.where(:id => params[:id]).first
+			if @sensorvalue == nil
+				error = { :error => "Sensorvalue "+params[:id]+" does not exist." }
+  	   			respond_with(error, :status => 404)	
+  	   		end
 		end
 end

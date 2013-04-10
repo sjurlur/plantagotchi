@@ -1,14 +1,14 @@
 class PlantsController < ApplicationController
 before_filter :find_plant, :only => [:show, :edit, :update, :destroy]
-
+respond_to :json, :xml, :html
 
 	def index
 		@plants = Plant.all
-
+		respond_with(@plants)
 	end
 
 	def show
-
+		respond_with(@plant)
 	end
 
 	def new
@@ -52,6 +52,10 @@ before_filter :find_plant, :only => [:show, :edit, :update, :destroy]
 
 	private
 		def find_plant
-			@plant = Plant.find(params[:id])
+			@plant = Plant.where(:id => params[:id]).first
+			if @plant == nil
+				error = { :error => "Plant "+params[:id]+ " does not exist." }
+  	   			respond_with(error, :status => 404)	
+  	   		end
 		end
 end
