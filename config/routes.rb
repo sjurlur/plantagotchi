@@ -56,6 +56,7 @@ Plantagotchi::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
     root :to => "plants#index"
+    match 'plants/:plant_id/sensorvalues/last24hours' => 'sensorvalues#last24hours'
     resources :plants do
      resources :sensorvalues
   end

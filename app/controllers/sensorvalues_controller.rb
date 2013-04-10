@@ -49,6 +49,15 @@ class SensorvaluesController < ApplicationController
 
 	end
 
+	def last24hours
+		@sensorvalues = @plant.sensorvalues.where("created_at >= ?",24.hours.ago)
+		if @sensorvalues == nil
+			error = { :error => "No records" }
+  	   			respond_with(error, :status => 404)	
+  	   		end
+  	   	respond_with(@sensorvalues)
+	end
+
 	private
 		def find_plant
 			@plant = Plant.where(:id => params[:plant_id]).first
