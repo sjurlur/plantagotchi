@@ -55,7 +55,7 @@ class SensorvaluesController < ApplicationController
 			error = { :error => "No records" }
   	   			respond_with(error, :status => 404)	
   	   		end
-  	   	respond_with(@sensorvalues)
+  	   	respond_with(@sensorvalues.collect(&:id))
 	end
 
 	private
