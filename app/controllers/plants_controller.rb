@@ -17,7 +17,11 @@ respond_to :json, :xml, :html
 
 	def create
 		@plant = Plant.new(params[:plant])
-		respond_with(@plant)
+		if @plant.save
+			respond_with(@plant, :status => 201)
+		else
+			error = { :error => "Not saved" }
+  	   		respond_with(error, :status => 400)	
 	end
 
 	def edit

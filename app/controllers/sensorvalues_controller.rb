@@ -18,7 +18,11 @@ class SensorvaluesController < ApplicationController
 
 	def create
 		@sensorvalue = @plant.sensorvalues.build(params[:sensorvalue])
-		respond_with(@sensorvalue)
+		if @sensorvalue.save
+			respond_with(@sensorvalue, :status => 201)
+		else
+			error = { :error => "Not saved" }
+  	   		respond_with(error, :status => 400)
 	end
 
 	def edit
