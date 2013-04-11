@@ -17,13 +17,7 @@ respond_to :json, :xml, :html
 
 	def create
 		@plant = Plant.new(params[:plant])
-		if @plant.save
-			flash[:notice] = "Plant has been created"
-			redirect_to @plant
-		else
-			flash[:alert] = "Plant has not been created"
-			render :action => "new"
-		end
+		respond_with(@plant)
 	end
 
 	def edit

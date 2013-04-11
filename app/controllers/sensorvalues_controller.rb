@@ -18,13 +18,7 @@ class SensorvaluesController < ApplicationController
 
 	def create
 		@sensorvalue = @plant.sensorvalues.build(params[:sensorvalue])
-		if @sensorvalue.save
-			flash[:notice] = "sensorvalue has been created"
-			redirect_to [@plant, @sensorvalue]
-		else
-			flash[:alert] = "sensorvalue has not been created"
-			render :action => "new"
-		end
+		respond_with(@sensorvalue)
 	end
 
 	def edit
