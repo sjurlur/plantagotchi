@@ -23,6 +23,7 @@ class SensorvaluesController < ApplicationController
 		else
 			error = { :error => "Not saved" }
   	   		respond_with(error, :status => 400)
+  	   	end
 	end
 
 	def edit
