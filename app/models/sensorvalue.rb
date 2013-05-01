@@ -7,3 +7,4 @@ class Sensorvalue < ActiveRecord::Base
   	:path => ":id.:extension", 
 	:url => ":s3_eu_url"
 end
+ 
