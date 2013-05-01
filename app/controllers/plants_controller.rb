@@ -5,6 +5,7 @@ respond_to :json, :xml, :html
 	def index
 		@plants = Plant.all
 		respond_with(@plants)
+		
 	end
 
 	def show
@@ -13,16 +14,13 @@ respond_to :json, :xml, :html
 
 	def new
 		@plant = Plant.new
+		respond_with(@plant)
 	end
 
 	def create
 		@plant = Plant.new(params[:plant])
-		if @plant.save
-			respond_with(@plant, :status => 201)
-		else
-			error = { :error => "Not saved" }
-  	   		respond_with(error, :status => 400)	
-  	   	end
+		flash[:notice] = "Plant was created successfully." if @plant.save
+		respond_with(@plant)
 	end
 
 	def edit
@@ -32,11 +30,11 @@ respond_to :json, :xml, :html
 	def update
 		if @plant.update_attributes(params[:plant])
 			flash[:notice] = "Plant has been updated"
-			redirect_to @plant
+			respond_with(@plant)
 		
 		else
 			flash[:alert] = "Plant has not been updated"
-			render :action => "edit"
+			respond_with(@plant)
 		end
 		
 
@@ -53,8 +51,9 @@ respond_to :json, :xml, :html
 		def find_plant
 			@plant = Plant.where(:id => params[:id]).first
 			if @plant == nil
+				flash[:error] = "Plant "+params[:id]+ " does not exist." 
 				error = { :error => "Plant "+params[:id]+ " does not exist." }
-  	   			respond_with(error, :status => 404)	
+  	   			respond_with(error, :status => 404, :location=>"nil")	
   	   		end
 		end
 end

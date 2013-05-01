@@ -1,5 +1,5 @@
 
-
+<% unless @plant == nil %>
 <h2><%= @plant.name %></h2> 
 <p>
 <i><%= @plant.plant_type %> plant at <%= @plant.location %></i>
@@ -99,4 +99,4 @@
 		<%= link_to "Add sensor values",  new_plant_sensorvalue_path(@plant) %>
 	</button>
 </div>
-
+<% end %>

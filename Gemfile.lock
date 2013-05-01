@@ -116,6 +116,8 @@ GEM
       mime-types
     pg (0.15.0)
     polyglot (0.3.3)
+    rabl (0.8.3)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -194,6 +196,7 @@ DEPENDENCIES
   jquery-rails
   paperclip
   pg
+  rabl
   rails (= 3.2.13)
   rspec-rails (~> 2.5)
   sass-rails!

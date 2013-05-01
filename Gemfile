@@ -3,6 +3,7 @@ ruby '1.9.3'
 gem 'rails', '3.2.13'
 
 gem 'aws-sdk'
+gem 'rabl'
 gem 'paperclip'
 gem 'dynamic_form'
 gem 'bootstrap-sass'

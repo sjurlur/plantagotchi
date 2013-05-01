@@ -18,7 +18,8 @@ class SensorvaluesController < ApplicationController
 
 	def create
 		@sensorvalue = @plant.sensorvalues.build(params[:sensorvalue])
-		respond_with(@sensorvalue, :location => plants_url)
+		flash[:notice] = "Sensorvalue was created successfully." if @plant.save
+		respond_with(@plant,@sensorvalue)
 	end
 
 	def edit
@@ -56,16 +57,18 @@ class SensorvaluesController < ApplicationController
 		def find_plant
 			@plant = Plant.where(:id => params[:plant_id]).first
 			if @plant == nil
+				flash[:error] = "Plant "+params[:plant_id]+ " does not exist." 
 				error = { :error => "Plant "+params[:plant_id]+ " does not exist." }
-  	   			respond_with(error, :status => 404)	
+  	   			respond_with(error, :status => 404, :location=>"nil")	
   	   		end
 		end
 
 		def find_sensorvalue
 			@sensorvalue = @plant.sensorvalues.where(:id => params[:id]).first
 			if @sensorvalue == nil
+				flash[:error] = "Sensorvalue "+params[:id]+" does not exist."
 				error = { :error => "Sensorvalue "+params[:id]+" does not exist." }
-  	   			respond_with(error, :status => 404)	
+  	   			respond_with(error, :status => 404, :location=>"nil")	
   	   		end
 		end
 end

@@ -1,3 +1,4 @@
+<% unless @sensorvalue == nil %>
 <div id="sensorvalues">
 	<h2><%= @sensorvalue.created_at %></h2>
 	<table class="table">
@@ -22,8 +23,9 @@
 			</tr>
 		</tbody>
 	</table>
-
-	<%= image_tag @sensorvalue.photo.url,{:class => "img-polaroid"} %>
+	<% unless @sensorvalue.photo_file_name.blank? %> 
+		<%= image_tag @sensorvalue.photo.url,{:class => "img-polaroid"} %>
+	<% end %>
 	
 	<br />
 	<br />
@@ -33,3 +35,4 @@
 	<%= link_to "Delete sensorvalue", [@plant, @sensorvalue], :method => :delete, :confirm => "Are you sure you want to delete these sensorvalues?" %></button>
 </div>
 </div>
+<% end %>

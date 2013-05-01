@@ -5,9 +5,10 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
+  host: localhost
   encoding: unicode
   database: plantagotchi_development
-  username: plantagotchi_rails
+  username: postgres
   pool: 5
 
 # Warning: The database defined as "test" will be erased and
